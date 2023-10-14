@@ -4,8 +4,7 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.enchantment.Enchantment
 
 open class EnchantedItemProperties : Item.Properties() {
-    var enchantments = HashMap<Enchantment, Int>()
-        protected set
+    val enchantments = HashMap<Enchantment, Int>()
 
     fun enchantment(enchantment: Enchantment, level: Int): EnchantedItemProperties {
         enchantments[enchantment] = level

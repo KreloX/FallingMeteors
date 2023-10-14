@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.Unique
 import org.spongepowered.asm.mixin.injection.At
 import org.spongepowered.asm.mixin.injection.Inject
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable
 
 @Mixin(Item::class)
 open class ItemMixin {
@@ -21,10 +22,10 @@ open class ItemMixin {
         if (properties is EnchantedItemProperties) enchantments = properties.enchantments
     }
 
-    @Override
-    open fun getDefaultInstance(): ItemStack {
-        val stack = ItemStack(this as Item)
+    @Inject(method = ["getDefaultInstance"], at = [At("RETURN")], cancellable = true)
+    fun injectDefaultInstance(cir: CallbackInfoReturnable<ItemStack>) {
+        val stack = cir.returnValue
         enchantments.forEach { (enchantment, level) -> stack.enchant(enchantment, level) }
-        return stack
+        cir.returnValue = stack
     }
 }
