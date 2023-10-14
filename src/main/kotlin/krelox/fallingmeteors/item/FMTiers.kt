@@ -1,6 +1,6 @@
 package krelox.fallingmeteors.item
 
-import krelox.fallingmeteors.FallingMeteors
+import krelox.fallingmeteors.MODID
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.item.Tier
@@ -14,7 +14,7 @@ object FMTiers {
         ForgeTier(3, 900, 10f, 2f, 15, BlockTags.NEEDS_DIAMOND_TOOL) {
             Ingredient.of(FMItems.METEORITE_INGOT)
         },
-        ResourceLocation(FallingMeteors.ID, "meteorite"),
+        ResourceLocation(MODID, "meteorite"),
         listOf(Tiers.IRON),
         listOf(Tiers.DIAMOND)
     )
@@ -22,7 +22,7 @@ object FMTiers {
         ForgeTier(3, 225, 7f, 2f, 20, BlockTags.NEEDS_DIAMOND_TOOL) {
             Ingredient.of(FMItems.FROZEN_IRON)
         },
-        ResourceLocation(FallingMeteors.ID, "frezarite"),
+        ResourceLocation(MODID, "frezarite"),
         listOf(Tiers.IRON),
         listOf(Tiers.DIAMOND)
     )

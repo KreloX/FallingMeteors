@@ -1,6 +1,6 @@
 package krelox.fallingmeteors.item
 
-import krelox.fallingmeteors.FallingMeteors
+import krelox.fallingmeteors.MODID
 import net.minecraft.Util
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
@@ -75,7 +75,7 @@ enum class FMArmorMaterials(
     }
 
     override fun getName(): String {
-        return FallingMeteors.ID + ':' + materialName
+        return "$MODID:$materialName"
     }
 
     override fun getToughness(): Float {
