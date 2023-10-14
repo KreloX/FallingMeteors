@@ -11,7 +11,7 @@ import net.minecraftforge.common.TierSortingRegistry
 
 object FMTiers {
     val METEORITE: Tier = TierSortingRegistry.registerTier(
-        ForgeTier(3, 900, 10F, 2F, 15, BlockTags.NEEDS_DIAMOND_TOOL) {
+        ForgeTier(3, 900, 10f, 2f, 15, BlockTags.NEEDS_DIAMOND_TOOL) {
             Ingredient.of(FMItems.METEORITE_INGOT)
         },
         ResourceLocation(FallingMeteors.ID, "meteorite"),
@@ -19,7 +19,7 @@ object FMTiers {
         listOf(Tiers.DIAMOND)
     )
     val FREZARITE: Tier = TierSortingRegistry.registerTier(
-        ForgeTier(3, 225, 7F, 2F, 20, BlockTags.NEEDS_DIAMOND_TOOL) {
+        ForgeTier(3, 225, 7f, 2f, 20, BlockTags.NEEDS_DIAMOND_TOOL) {
             Ingredient.of(FMItems.FROZEN_IRON)
         },
         ResourceLocation(FallingMeteors.ID, "frezarite"),
