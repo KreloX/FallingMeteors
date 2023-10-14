@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "krelox.fallingmeteors.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "fallingmeteors.refmap.json",
+  "mixins": [
+    "ItemMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

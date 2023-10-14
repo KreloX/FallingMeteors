@@ -2,6 +2,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.neoforged.gradle' version '[6.0.13, 6.2)'
+    id 'org.spongepowered.mixin' version '[0.7,0.8)'
     // Adds the Kotlin Gradle plugin
     id 'org.jetbrains.kotlin.jvm' version '1.8.22'
     // OPTIONAL Kotlin Serialization plugin
@@ -19,6 +20,8 @@ base {
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+apply plugin: 'org.moddingx.modgradle.sourcejar'
 
 println("Java: ${System.getProperty('java.version')}, JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('java.vendor')}), Arch: ${System.getProperty('os.arch')}")
 minecraft {
@@ -102,7 +105,8 @@ repositories {
 }
 
 dependencies {
-    // Use the latest version of Minecraft Forge
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
     minecraft "net.neoforged:forge:$minecraft_version-$neo_version"
 
     implementation "thedarkcolour:kotlinforforge:$kff_version"
@@ -164,4 +168,9 @@ publishing {
             url "file://${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+mixin {
+    config "${project.mod_id}.mixins.json"
+    add sourceSets.main, "${project.mod_id}.refmap.json"
 }

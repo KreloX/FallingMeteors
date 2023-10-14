@@ -5,6 +5,7 @@ import krelox.fallingmeteors.LOGGER
 import krelox.fallingmeteors.block.FMBlocks
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.SwordItem
 import net.minecraft.world.item.enchantment.Enchantments
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
@@ -22,10 +23,17 @@ object FMItems {
     val FROZEN_IRON by registerItem("frozen_iron")
     val KREKNORITE_INGOT by registerItem("kreknorite_ingot")
 
+    val METEORITE_SWORD by registerItem("meteorite_sword") {
+        SwordItem(FMTiers.METEORITE, 3, -2.4f, EnchantedItemProperties())
+    }
+
+    val FREZARITE_SWORD by registerItem("frezarite_sword") {
+        SwordItem(FMTiers.FREZARITE, 3, -2.4f, EnchantedItemProperties())
+    }
+
     val KREKNORITE_SWORD by registerItem("kreknorite_sword") {
-        EnchantableSwordItem(
-            FMTiers.METEORITE, 5, -2.4f,
-            EnchantableItem.Properties().enchantment(Enchantments.FIRE_ASPECT, 2)
+        SwordItem(
+            FMTiers.METEORITE, 5, -2.4f, EnchantedItemProperties().enchantment(Enchantments.FIRE_ASPECT, 2)
         )
     }
 
