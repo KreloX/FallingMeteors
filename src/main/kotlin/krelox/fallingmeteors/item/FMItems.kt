@@ -91,15 +91,11 @@ object FMItems {
         )
     }
 
-    // Block Items
-    val METEORITE_BLOCK by registerItem("meteorite_block") { BlockItem(FMBlocks.METEORITE_BLOCK, Item.Properties()) }
-    val METEORITE_ORE by registerItem("meteorite_ore") { BlockItem(FMBlocks.METEORITE_ORE, Item.Properties()) }
-
     private fun registerItem(name: String): ObjectHolderDelegate<Item> {
         return ITEMS.registerObject(name) { Item(Item.Properties()) }
     }
 
-    private fun registerItem(name: String, item: () -> Item): ObjectHolderDelegate<Item> {
+    internal fun registerItem(name: String, item: () -> Item): ObjectHolderDelegate<Item> {
         return ITEMS.registerObject(name, item)
     }
 }

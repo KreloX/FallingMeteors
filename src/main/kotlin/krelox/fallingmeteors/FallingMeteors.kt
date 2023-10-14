@@ -26,7 +26,7 @@ object FallingMeteors {
     @Suppress("unused")
     val FALLING_METEORS: CreativeModeTab by CREATIVE_MODE_TABS.registerObject("falling_meteors") {
         CreativeModeTab.builder()
-            .icon { FMItems.METEORITE_BLOCK.defaultInstance }
+            .icon { FMBlocks.METEORITE_BLOCK.asItem().defaultInstance }
             // TODO
             //.title()
             .displayItems { _, output -> FMItems.ITEMS.entries.forEach { output.accept(it.get().defaultInstance) } }
