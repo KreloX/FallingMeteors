@@ -1,8 +1,10 @@
 package krelox.fallingmeteors
 
 import krelox.fallingmeteors.block.FMBlocks
+import krelox.fallingmeteors.data.generators.FMLanguageData
 import krelox.fallingmeteors.data.generators.tags.FMBlockTagData
 import krelox.fallingmeteors.data.generators.tags.FMItemTagData
+import krelox.fallingmeteors.data.resources.FMLanguage
 import krelox.fallingmeteors.item.FMItems
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.CreativeModeTab
@@ -25,8 +27,7 @@ object FallingMeteors {
     val FALLING_METEORS: CreativeModeTab by CREATIVE_MODE_TABS.registerObject("falling_meteors") {
         CreativeModeTab.builder()
             .icon { FMBlocks.METEORITE_BLOCK.asItem().defaultInstance }
-            // TODO
-            //.title()
+            .title(FMLanguage.FALLING_METEORS_TAB)
             .displayItems { _, output -> FMItems.ITEMS.entries.forEach { output.accept(it.get().defaultInstance) } }
             .build()
     }
@@ -45,9 +46,10 @@ object FallingMeteors {
         val lookupProvider = event.lookupProvider
         val packOutput = generator.packOutput
 
+        generator.addProvider(event.includeClient(), FMLanguageData(packOutput))
+
         val blockTags = FMBlockTagData(packOutput, lookupProvider, fileHelper)
         generator.addProvider(event.includeServer(), blockTags)
-        generator.addProvider(event.includeServer(), FMItemTagData(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper)
-        )
+        generator.addProvider(event.includeServer(), FMItemTagData(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper))
     }
 }

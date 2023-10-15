@@ -11,14 +11,14 @@ import net.minecraftforge.registries.RegisterEvent
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 object FMEnchantments {
-    val MAGNETIZATION = MagnetizationEnchantment(Enchantment.Rarity.VERY_RARE, EquipmentSlot.values())
     val COLD_TOUCH = ColdTouchEnchantment(Enchantment.Rarity.VERY_RARE, arrayOf(EquipmentSlot.FEET, EquipmentSlot.LEGS))
+    val MAGNETIZATION = MagnetizationEnchantment(Enchantment.Rarity.VERY_RARE, EquipmentSlot.values())
 
     @SubscribeEvent
     fun register(event: RegisterEvent) {
         event.register(ForgeRegistries.Keys.ENCHANTMENTS) { helper ->
-            helper.register(ResourceLocation(MODID, "magnetization"), MAGNETIZATION)
             helper.register(ResourceLocation(MODID, "cold_touch"), COLD_TOUCH)
+            helper.register(ResourceLocation(MODID, "magnetization"), MAGNETIZATION)
         }
     }
 }
