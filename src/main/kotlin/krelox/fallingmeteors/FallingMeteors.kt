@@ -1,9 +1,12 @@
 package krelox.fallingmeteors
 
 import krelox.fallingmeteors.block.FMBlocks
+import krelox.fallingmeteors.data.generators.tags.FMBlockTagData
+import krelox.fallingmeteors.data.generators.tags.FMItemTagData
 import krelox.fallingmeteors.item.FMItems
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.CreativeModeTab
+import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.registries.DeferredRegister
 import org.apache.logging.log4j.LogManager
@@ -29,8 +32,22 @@ object FallingMeteors {
     }
 
     init {
+        MOD_BUS.addListener(this::gatherData)
+
         FMBlocks.BLOCKS.register(MOD_BUS)
         FMItems.ITEMS.register(MOD_BUS)
         CREATIVE_MODE_TABS.register(MOD_BUS)
+    }
+
+    private fun gatherData(event: GatherDataEvent) {
+        val generator = event.generator
+        val fileHelper = event.existingFileHelper
+        val lookupProvider = event.lookupProvider
+        val packOutput = generator.packOutput
+
+        val blockTags = FMBlockTagData(packOutput, lookupProvider, fileHelper)
+        generator.addProvider(event.includeServer(), blockTags)
+        generator.addProvider(event.includeServer(), FMItemTagData(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper)
+        )
     }
 }

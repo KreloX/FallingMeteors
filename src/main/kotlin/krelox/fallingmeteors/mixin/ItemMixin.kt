@@ -18,7 +18,7 @@ open class ItemMixin {
     private var enchantments = HashMap<Enchantment, Int>()
 
     @Inject(method = ["<init>"], at = [At("RETURN")])
-    private fun constructorInject(properties: Properties, ci: CallbackInfo) {
+    private fun injectConstructor(properties: Properties, ci: CallbackInfo) {
         if (properties is EnchantedItemProperties) enchantments = properties.enchantments
     }
 
