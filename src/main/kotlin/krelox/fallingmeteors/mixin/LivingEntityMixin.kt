@@ -27,7 +27,7 @@ abstract class LivingEntityMixin(entityType: EntityType<*>, level: Level) : Enti
     @Inject(method = ["onChangedBlock"], at = [At("HEAD")])
     fun injectOnChangedBlock(pos: BlockPos, ci: CallbackInfo) {
         var coldTouchLevel = -1
-        armorSlots.forEach { stack -> coldTouchLevel += stack.getEnchantmentLevel(FMEnchantments.COLD_TOUCH) }
+        armorSlots.forEach { coldTouchLevel += it.getEnchantmentLevel(FMEnchantments.COLD_TOUCH) }
 
         if (coldTouchLevel > -1 && !isInWater) {
             val icePos = blockPosition().below()

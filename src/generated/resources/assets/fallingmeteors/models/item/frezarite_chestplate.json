@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fallingmeteors:item/armor/frezarite_chestplate"
+  }
+}

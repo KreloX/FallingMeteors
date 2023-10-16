@@ -1,6 +1,7 @@
 package krelox.fallingmeteors
 
 import krelox.fallingmeteors.block.FMBlocks
+import krelox.fallingmeteors.data.generators.FMItemModelData
 import krelox.fallingmeteors.data.generators.FMLanguageData
 import krelox.fallingmeteors.data.generators.tags.FMBlockTagData
 import krelox.fallingmeteors.data.generators.tags.FMItemTagData
@@ -47,6 +48,7 @@ object FallingMeteors {
         val packOutput = generator.packOutput
 
         generator.addProvider(event.includeClient(), FMLanguageData(packOutput))
+        generator.addProvider(event.includeClient(), FMItemModelData(packOutput, fileHelper))
 
         val blockTags = FMBlockTagData(packOutput, lookupProvider, fileHelper)
         generator.addProvider(event.includeServer(), blockTags)

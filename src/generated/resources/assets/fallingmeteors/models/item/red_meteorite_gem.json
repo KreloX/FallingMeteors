@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fallingmeteors:item/materials/red_meteorite_gem"
+  }
+}

@@ -18,7 +18,7 @@ class FMLanguageData(output: PackOutput) : LanguageProvider(output, MODID, "en_u
         add(FMEnchantments.COLD_TOUCH, "Cold Touch")
         add(FMEnchantments.MAGNETIZATION, "Magnetization")
 
-        FMItems.ITEMS.entries.forEach { registryObject -> add(registryObject.get(), formatName(registryObject)) }
+        FMItems.ITEMS.entries.forEach { add(it.get(), formatName(it)) }
     }
 
     private fun formatName(registryObject: RegistryObject<*>): String {
